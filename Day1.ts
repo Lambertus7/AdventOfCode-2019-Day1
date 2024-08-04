@@ -1,17 +1,17 @@
 /* BATTLEPLAN for Part 1: 
 Step 1. First we need to create a function that can even calculate the amount of fuel for a module: √
-The given formula for calculating the required fuel of a module is the following: You take the mass devide it by 3 then rounded down (which means we will make it into an interger) and follow through by substracting 2. 
-Step 2. Test Calculation Formula with the given examples; if it's consisitent with all examples we can move on to one of the actual data for input mass, may have to map the entirety of the array due to us having to change the list altogether: √
+The given formula for calculating the required fuel of a module is the following: You take the mass divide it by 3 then rounded down (which means we will make it into an interger) and follow through by substracting 2. 
+Step 2. Test Calculation Formula with the given examples by creating a unit test; if it's consisitent with all examples we can move on to one of the actual data for input mass, may have to map the entirety of the array due to us having to change the list altogether: √
 Step 3. Do the rest of the calculation for the InputMass but since we are going to change the array we may have to utilize the map function: √
 Step 4. Calculate the sum total of the required fuel for all modules: √
 
 Part 2:
 Step 1. Create a Formula where we can calculate the fuel of the fuel until we reach the very base (0): √
 It sounds like there will be some use for a loop here until we reach 0. May have to google this one
-Step 2. Calculating the total
+Step 2. Calculating the sum total
  */
-
-const givenExamples = [12, 14, 1969, 100756]; //Answers = [2, 2, 654, 33583]
+const fileInput = open("./input.txt", "r");
+export const givenExamples = [12, 14, 1969, 100756]; //Expected answers = [2, 2, 645, 33583]
 
 const inputMass = [
   80590, 86055, 92321, 131464, 73326, 144607, 124438, 72589, 96471, 65712,
@@ -26,17 +26,12 @@ const inputMass = [
   102478, 132083, 92287, 147977, 60584, 91031, 59910, 147595, 145263,
 ];
 
-// interface CalculationProps {
-//   mass: number;
-// }
-
 /*---Part 1---*/
 //Formula:
-const calculationForRequiredFuel = (mass: number) => {
+export const calculationForRequiredFuel = (mass: number) => {
   return Math.floor(mass / 3) - 2;
 }; //Math.floor does the rounding down to the closest interger.
 
-// const testRun = givenExamples.map(CalculationForRequiredFuel);
 const requiredFuel = inputMass.map(calculationForRequiredFuel);
 
 console.log("The required fuel for each module:", requiredFuel);
@@ -61,7 +56,7 @@ const calculateTotalFuel = (mass: number): number => {
 
   return totalFuel;
 };
-// Calculate the total fuel:
+//Calculate the total fuel:
 const totalFuelRequired = inputMass
   .map(calculateTotalFuel)
   .reduce((acc, fuel) => acc + fuel, 0);
